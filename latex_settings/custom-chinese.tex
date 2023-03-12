@@ -1,0 +1,333 @@
+%设置文章格式
+
+\usepackage[final]{pdfpages}
+
+\usepackage{geometry}
+\usepackage{makecell}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\makeatletter
+\let\c@lofdepth\relax
+\let\c@lotdepth\relax
+\makeatother
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage[titles,subfigure]{tocloft}
+\usepackage{soul}
+\usepackage{color,xcolor}
+\usepackage{setspace}
+\usepackage{titletoc}
+\usepackage{longtable}
+\usepackage[list=off]{bicaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathptmx} %设置数学公式为新罗马字体
+\usepackage{amsmath} %几个数学宏包
+\usepackage{fontspec}
+
+% ============== 根据内容需要导入的 package —— start ==============
+\usepackage{bm} %加粗数学公式
+\usepackage{booktabs} % 表格相关（\botrule）
+\usepackage{tabularx} % 表格内容过长 
+\usepackage{algorithm}% 算法相关
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+% \usepackage{hyperref}% 超链接相关
+\usepackage{float} % 强制控制图表位置
+% ============== 根据内容需要导入的 package —— start ==============
+
+\AtBeginDocument{\DeclareMathAlphabet{\mathbf}{OT1}{cmr}{bx}{n}}
+
+% 超链接相关设置
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,  
+	filecolor=blue,      
+	urlcolor=red,
+	citecolor=black, % green
+}
+% 设置页边距
+\geometry{a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm}
+
+% 设置行间距 1.5倍
+\linespread{1.4}\selectfont
+
+% 设置段与段之间的垂直距离 \parskip默认橡皮长度是0pt plus 1pt
+\setlength{\parskip}{0pt}
+% \setlength{\parindent}{0pt}
+
+%设置字体
+% 设置英文字体
+\setmainfont{Times New Roman}[
+    BoldFont = Times New Roman Bold,
+    ItalicFont = Times New Roman Italic,
+    BoldItalicFont = Times New Roman Bold Italic
+]
+
+\setsansfont{Times New Roman}[
+    BoldFont = Times New Roman Bold,
+    ItalicFont = Times New Roman Italic,
+    BoldItalicFont = Times New Roman Bold Italic
+]
+
+\setmonofont{Times New Roman}[
+    BoldFont = Times New Roman Bold,
+    ItalicFont = Times New Roman Italic,
+    BoldItalicFont = Times New Roman Bold Italic
+]
+
+%设置字号
+\usepackage{ctexsize,type1cm}
+\newcommand{\chuhao}{\fontsize{42pt}{42pt}\selectfont}
+\newcommand{\xiaochu}{\fontsize{36pt}{36pt}\selectfont}
+\newcommand{\yihao}{\fontsize{26pt}{39pt}\selectfont}
+\newcommand{\xiaoyi}{\fontsize{24pt}{36pt}\selectfont}   
+\newcommand{\erhao}{\fontsize{22pt}{33pt}\selectfont}          
+\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}          
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}        
+\newcommand{\xiaosan}{\fontsize{15pt}{22.5pt}\selectfont}        
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}            
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}
+\newcommand{\xiaowu}{\fontsize{9pt}{13.5pt}\selectfont}    
+\newcommand{\liuhao}{\fontsize{7.5pt}{11.25pt}\selectfont}
+
+%使用公式，表格，图片
+\usepackage{mathtools,amsmath,amssymb,graphicx,array,float}
+
+%按照章节编号
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\numberwithin{equation}{chapter}
+
+%图、表、公式格式改为 X-X
+\renewcommand\thefigure{\arabic{chapter}-\arabic{figure}}
+\captionsetup[figure]{labelsep=space}
+
+\renewcommand\thetable{\arabic{chapter}-\arabic{table}}
+\captionsetup[table]{labelsep=space}
+
+\renewcommand\theequation{\arabic{chapter}-\arabic{equation}}
+
+%设置图表英文标题格式
+\captionsetup{font={stretch=1.2}} %调整中英文图表标题的行距
+\setlength{\abovecaptionskip}{6pt} %调整图表标题与图片和表格之间的距离
+\captionsetup[figure][bi-second]{name=\wuhao Fig.}
+\captionsetup[table][bi-second]{name=\wuhao Table}
+
+% 算法
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+% 设置页眉面脚
+%% 设置章节前的页码格式
+%\usepackage[pagestyles]{titlesec}
+%\newpagestyle{MyStyle}{
+%  \setfoot{}{\Roman{page}}{}
+%%  \headrule
+%}
+
+\usepackage{fancyhdr}
+
+%\fancypagestyle{abstract}
+%{
+%	\fancyhf{}
+%	\renewcommand{\headrulewidth}{0.5pt}
+%	%	\renewcommand{\footrulewidth}{0mm}
+%	\fancyfoot[C]{\songti\xiaowu \Roman{page}}
+%	\fancyhead[C]{\wuhao \leftmark}
+%}
+
+%重新设置plain,chapter设置页眉时会调用plain，因此需要重新定义plain，不能设置为其他名称
+
+
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\songti\xiaowu  \Roman{page} }
+	\fancyhead[C]{\songti\wuhao \leftmark}
+}
+
+
+
+
+
+%页眉设置，博士和硕士学位论文请在下面自行修改
+\fancypagestyle{body}{
+    \fancyhf{}
+    \fancyfoot[C]{\songti\xiaowu \thepage}
+    \fancyhead[CO]{\songti\wuhao \rightmark}
+    \fancyhead[CE]{\songti\wuhao 重庆邮电大学硕士学位论文}
+}
+
+\fancypagestyle{others}{
+	\fancyhf{}
+	\fancyfoot[C]{\songti\xiaowu \thepage}
+	\fancyhead[CO]{\songti\wuhao \leftmark}
+	\fancyhead[CE]{\songti\wuhao 重庆邮电大学硕士学位论文}
+}
+
+
+
+
+
+
+
+%设置双线页眉
+%\makeatletter
+%\def\headrule{
+%    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+%    \hrule\@height 1.0pt \@width\headwidth\vskip1pt%上面线为1pt粗
+%    \hrule\@height 0pt \@width\headwidth  %下面0.5pt粗
+%    \vskip-2\headrulewidth\vskip-1.2pt}    %两条线的距离1pt
+%    \vspace{6mm}}     %双线与下面正文之间的垂直间距
+%\makeatother
+
+%设置双线页脚
+\makeatletter
+\def\footrule{
+    {\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi%
+    \hrule\@height 0pt \@width\headwidth          %上面0.5pt粗
+    \vskip 1pt
+    \hrule\@height 0pt \@width\headwidth %下面线为1pt粗
+    \vskip-2\headrulewidth\vskip-1.2pt}    %两条线的距离1pt
+    \vspace{8mm}}     %双线与下面正文之间的垂直间距
+\makeatother
+
+%\renewcommand\thechapter{\arabic{chapter}}
+
+%设置文章格式
+\ctexset {
+    contentsname={目 \quad 录},
+    listfigurename={图目录},
+    listtablename={表目录},
+    figurename={\wuhao 图},
+    tablename={\wuhao 表},
+    bibname={参考文献},
+    appendixname={附录},
+    chapter={
+    	name={第,章},
+    	aftername=\enspace,
+    	number={\arabic{chapter}},
+        beforeskip={-10pt},
+        afterskip={18pt},
+        nameformat={\heiti\sanhao\centering\mdseries}, 
+        titleformat={\heiti\sanhao\centering\mdseries},
+    },
+    section={
+    	aftername=\enspace,
+    	beforeskip={18pt},
+    	afterskip={6pt},
+        format={\heiti\sihao\leftline},
+    },
+    subsection={
+    	aftername=\enspace,
+    	beforeskip={12pt},
+    	afterskip={6pt},
+        format={\heiti\sihao\leftline},
+    },
+    subsubsection={
+    	aftername=\enspace,
+    	beforeskip={12pt},
+    	afterskip={6pt},
+        format={\heiti\xiaosi\leftline},
+    }
+}
+
+
+
+% 目录中的章加点
+%\usepackage[titles]{tocloft}
+%\renewcommand{\cftdot}{$\cdot$}
+%\renewcommand{\cftdotsep}{1.5}
+%\setlength{\cftbeforechapskip}{10pt}
+%
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+%\renewcommand{\cftchapdotsep}{\cftdotsep}
+%\makeatletter
+%\renewcommand{\numberline}[1]{
+%\settowidth\@tempdimb{#1\hspace{0.5em}}
+%\ifdim\@tempdima<\@tempdimb
+%  \@tempdima=\@tempdimb
+%\fi
+%\hb@xt@\@tempdima{\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
+%\makeatother
+
+% 设置目录字体尺寸
+%\renewcommand{\cftchapfont}{\heiti\xiaosi}
+%\renewcommand{\cftsecfont}{\heiti\xiaosi}
+%\renewcommand{\cftsubsecfont}{\songti\xiaosi}
+%\renewcommand{\cftsubsubsecfont}{\songti\xiaosi}
+
+% 设置目录标题深度
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+% 设置目录标题缩进，字体等
+\titlecontents{chapter}[3.8em]{\heiti\xiaosi}{\contentslabel{3.8em}}{\hspace{-3.76em}}{\titlerule*[0.4pc]{$\cdot$}\contentspage\hspace*{0.01em}}
+\titlecontents{section}[3.8em]{\songti\xiaosi}{\contentslabel{2em}}{\hspace{-2em}}{\titlerule*[0.4pc]{$\cdot$}\contentspage\hspace*{0.01em}}
+\titlecontents{subsection}[6.5em]{\songti\xiaosi}{\contentslabel{2.7em}}{\hspace{-2.7em}}{\titlerule*[0.4pc]{$\cdot$}\contentspage\hspace*{0.01em}}
+
+%设置图表目录标题格式
+\titlecontents{figure}[0pt]{\songti\xiaosi\settowidth{\hangindent}{图~\thecontentslabel\ \ }}{图~\thecontentslabel\ \ }{}{\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
+
+\titlecontents{table}[0pt]{\songti\xiaosi\settowidth{\hangindent}{表~\thecontentslabel\ \ }}{表~\thecontentslabel\ \ }{}{\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
+
+%\dottedcontents{subsubsection}[4cm]{\normalsize}{4em}{4pt}
+
+%使用代码排版包
+\usepackage{listings}
+\usepackage{color}
+\lstset{%
+    frame=shadowbox,
+    extendedchars=false,            % 不使用xelatex而使用CJK方式处理汉字
+    language=python,
+    basicstyle=\sffamily,           % 设置整体格式
+    keywordstyle=\bfseries,         % 关键字格式
+    commentstyle=\rmfamily\itshape, % 注释格式
+    stringstyle=\ttfamily,          % 字符串格式
+    columns=flexible,
+    escapechar=',                   % 注释中显示汉字，eg //'一个整数'
+    tabsize=4,
+    numbers=left,
+    numberstyle=\small,             % 行号字体设置
+    stepnumber=1,                   % 行号距离设置，1代表每行加行号
+    numbersep=8pt,                  % 行号和代码距离设置
+    backgroundcolor=\color{white},
+    showspaces=false,               % show spaces adding particular underscores
+    showstringspaces=false,         % 使用下划线连接字符串
+    showtabs=false,
+    frame=single,                   % 给代码加边框
+    captionpos=b,                   % sets the caption-position to bottom
+    breaklines=true,                % 自动换行设置
+    breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+    escapeinside={\%*}{*)},         % if you want to add a comment within your code
+    xleftmargin=2em,                % 设置左边距，宽度默认是与页芯等宽的
+    xrightmargin=2em,               % 设置右边距，宽度默认是与页芯等宽的
+    aboveskip=1em                   % 设置上边距
+}
+
+%设置自定义变量
+\newcommand\degree{^\cire}
+
+% 定义文献引用格式,\cite正常引用 \supercite右上角引用
+\usepackage{cite}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\newcommand\supercite[2][]{%
+\textsuperscript{\cite[#1]{#2}}
+}
+
+\usepackage{enumitem}
+\setlist[description]{
+    itemsep=-5pt,
+    font=\songti,
+}
+
+% 定义中文封面环境
+\newenvironment{titletabbing}
+{\par\bfseries\songti\sihao\tabbing}
+{\endtabbing\par}
+
+\usepackage[nottoc]{tocbibind}
+\endinput

@@ -1,0 +1,69 @@
+\specialsectioning
+
+\chapter{作者简介}
+\thispagestyle{others}
+\pagestyle{others}
+
+% 定义类似参考文献序号样式的列表
+% 由于写作指南并没有明确规定每个item的间距，暂时设置如下
+\newlist{achievements}{enumerate}{1}
+\setlist[achievements]{
+	topsep     = 6bp,	%列表到上下文的垂直距离
+	partopsep  = 0bp, %列表与上方段落之间的垂直间距
+	itemsep    = 6bp, %相邻列表项之间的垂直间距
+	parsep     = 0bp,	%段落之间的垂直间距
+	leftmargin = *,	%列表项左侧的空白宽度
+	itemindent = 0pt,	%标签缩进量
+	align      = left,	%列表项的对齐方式（默认左对齐）
+	label      = [\arabic*],	%列表项的标记格式
+}
+
+\section{1. \ 基本情况}
+张某某，男，重庆人，1993年8月出生，重庆邮电大学XX学院XX专业2018级博士研究生。
+
+\section{2. \ 教育和工作经历}
+%\begin{itemize}[leftmargin=*, align=left]
+%	\item [2010.08\textasciitilde2014.06] 重庆邮电大学光电工程学院，本科，专业：电子科学与技术
+%	
+%	\item [2014.08\textasciitilde2015.06] 重庆邮电大学通信与信息工程学院，博士研究生，专业：信息与通信工程
+%\end{itemize}
+2010.08\textasciitilde2014.06 \quad 重庆邮电大学光电工程学院，本科，专业：电子科学与技术 
+
+2014.08\textasciitilde2015.06 \quad 华为，技术研究工程师 
+
+2015.08\textasciitilde2018.06 \quad 重庆邮电大学光电工程学院，硕士研究生，专业：电子科学与技术 
+
+2018.08\textasciitilde2022.06 \quad 重庆邮电大学通信与信息工程学院，博士研究生，专业：信息与通信工程
+
+\section{3. \ 攻读学位期间的研究成果}
+
+\subsection{3.1 \ 发表的学术论文和著作}
+\begin{achievements}
+	\item ZHANG M ,XX, XX, et al. XXXX[J]. Future Generation Computer Systems, 2020. (SCI期刊)
+	
+	\item ZHANG M , XX, XX. XXXX[J]. International Journal of Machine Learning and Cybernetics, 2021, 12(9): 2543–2557. (SCI期刊)
+	
+	\item XX, 张某某, XX. XXXX [J]. 计算机学报, 2022. (已录用)
+	
+	\item XX, XX, XX,张某某等. XXXX[M]. 科学出版社, 2021. (专著)
+\end{achievements}
+
+\subsection{3.2 \ 申请（授权）专利}
+
+\begin{achievements}
+	\item 张某某, XXX, XXX等. 专利名称: 专利号[P]. 授权日期.
+\end{achievements}
+
+\subsection{3.3 \ 参与的科研项目及获奖}
+
+格式：XXX项目, 项目名称, 起止时间, 完成情况, 作者贡献.
+\begin{achievements}
+	\item 国家自然科学基金重点项目, XXXX (No.000000), 2017.01-2020.12, 参与.
+	
+	\item 重庆邮电大学博士研究生人才培养项目, XXXX (No.000000), 主持.
+	
+	\item XXX, 张某某, XXX等. 科研项目名称. 重庆市科技进步三等奖, 获奖日期 .
+\end{achievements}
+
+
+

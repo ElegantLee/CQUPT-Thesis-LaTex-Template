@@ -1,12 +1,16 @@
 % !TEX root = main.tex
+
+
 % 文章的主体架构章节数均在此设计编辑。
 % ================================ 导言区 —— start ================================
 \documentclass[UTF8,twoside,zihao=-4,AutoFakeBold,scheme=chinese,openany]{ctexbook}
 \usepackage{graphicx}
-%\usepackage{gbt7714}
 % 输入配置文件，例如调用的宏包（公式，插图等）
+
 \input{latex_settings/custom-chinese}
 
+
+%取消章节编号
 \makeatletter
 \newcommand\specialsectioning{
 	\setcounter{secnumdepth}{-2}
@@ -24,14 +28,17 @@
 % 封面页及扉页
 \pagestyle{empty}
 \input{chapters/coverpage}
+
+
 % 原创性声明
 \input{chapters/original}
 
 \clearpage
 
-% 前序部分（中英文摘要，目录等，chapter后面不编号）
+%前序部分（中英文摘要，目录等，chapter后面不编号）
 \frontmatter
-% 开始以大写罗马字母计页码
+
+%开始以大写罗马字母计页码
 \pagenumbering{Roman}
 % 页面格式
 \pagestyle{plain}
@@ -42,14 +49,21 @@
 % 目录
 \begin{spacing}{1.15}
 \tableofcontents
-% 图目录
-\newcommand{\loflabel}{图}
-\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+
+
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+%图目录
+%\newcommand{\loflabel}{图}
+%\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
 \listoffigures
-% 表目录
-\newcommand{\lotlabel}{表}
-\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+
+%表目录
+%\newcommand{\lotlabel}{表}
+%\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
 \listoftables
+\endgroup
+
 \end{spacing}
 
 % 主要符号表
@@ -62,9 +76,11 @@
 % 开始章节写作，chapter后面开始编号，显示特定页眉页脚
 \mainmatter
 \pagenumbering{arabic}
-\pagestyle{body}
-\renewcommand\thesection{\arabic {section}}
-\renewcommand{\sectionmark}[1]{\markright{第 \thesection 章 \ #1}}
+
+%正文页眉避免英文全部大写
+\renewcommand\thechapter{\arabic{chapter}}
+\renewcommand{\chaptermark}[1]{\markboth{第 \thechapter 章 \ #1}{}}
+
 
 %\titlespacing*{\section}{0pt}{24pt}{18pt}
 
@@ -76,7 +92,14 @@
 \include{chapters/3}
 % 第4章
 \include{chapters/4}
-% 如果要增加章节数请在此加项
+
+
+%如果要增加章节数请在此加项
+
+\backmatter
+
+%取消后续章节的页眉上的章节编号
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
 % ======== 参考文献 —— start ========
 % ''' bibitem 格式 '''

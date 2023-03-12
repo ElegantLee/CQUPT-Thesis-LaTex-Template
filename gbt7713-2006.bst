@@ -122,7 +122,7 @@ FUNCTION {cap.period} 		{"\@. "}
 FUNCTION {cap.comma} 			{"\@, "}
 FUNCTION {cap.colon} 			{"\thinspace{}\textnormal{: }"}
 FUNCTION {cap.double.slash} 	{" //\thinspace{}"}
-FUNCTION {cap.dash} 			{"\thinspace{}\textnormal{--}\thinspace{}"}
+FUNCTION {cap.dash} 			{"\textnormal{-}"}
 
 % Predefined latex command used to format the style of bibitems
 FUNCTION {env.bibbegin} 		{ "\begin{thebibliography}" }
@@ -153,7 +153,18 @@ FUNCTION {cmd.bibdate} 			{ "\providecommand{\bibdate}[1]{#1}" }
 FUNCTION {cmd.biburl} 			{ "\providecommand{\biburl}[1]{\newline\url{#1}}" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                  %
+%自定义指令
+FUNCTION {cmd.wuhao} {"\wuhao"}   %设置参考文献字体大小
+FUNCTION {cmd.itemlength} {"\setlength{\itemsep}{-1.5ex}"}  %缩小条目间行距
+FUNCTION {cmd.thispagestyle} {"\thispagestyle{others}"}
+FUNCTION {cmd.pagestyle} {"\pagestyle{others}"}
+FUNCTION {cmd.makeatletter} {"\makeatletter"}
+FUNCTION {cmd.hfill} {"\renewcommand\@biblabel[1]{[#1]\hfill}"}  %序号左对齐
+FUNCTION {cmd.makeatother} {"\makeatother"}
+FUNCTION {cmd.labellength} {"\setlength{\labelsep}{0cm}"}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
 FUNCTION {log.str} {                              % void Entry::log_str(String value, String message)
   debug.enabled {                                 %   if (debug_enabled == 1) {
     "DEBUG: " swap$ * " - '" *                    %     message = "DEBUG: " + message + " - '";
@@ -707,7 +718,17 @@ FUNCTION {format.translator} {                    % String Emtry::format_transla
                                                   %
 FUNCTION {format.title} {                         % String Emtry::format_title(String title) {
   "title" format.bibinfo                          %   return format_bibinfo(title, "title");
-}                                                 % }
+}  
+% 英文文献首字母大写，其他小写
+% FUNCTION {format.title}
+% { 
+%   is.in.chinese {
+%     "title" format.bibinfo
+%   } {
+%       title "t" change.case$
+%       "title" format.bibinfo
+%   } if$
+% }% }
                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                   %
@@ -1937,6 +1958,23 @@ FUNCTION {begin.bib} {                            % void begin_bib() {
   "{" longest.label * "}" * write$                %   write("{" + longest.label + "}");
   newline$                                        %   writeln();
   write.style.commands                            %   write_style_commands();
+  newline$
+  cmd.wuhao write$
+  newline$
+  cmd.itemlength write$
+  newline$
+  cmd.thispagestyle write$
+  newline$
+  cmd.pagestyle write$
+  newline$
+  cmd.makeatletter write$
+  newline$
+  cmd.hfill write$
+  newline$
+  cmd.makeatother write$
+  newline$
+  cmd.labellength write$
+  newline$
 }                                                 % }
                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
